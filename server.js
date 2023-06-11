@@ -2,13 +2,32 @@
 # INICIALIZANDO AS CONSTANTES
 #=================================================*/
 
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
+
+const http = require('http');
+const port = 8081;
+
+const rotas = {
+    '/': 'Curso de Node',
+    '/livros': 'Entrei na pag de livros',
+    '/autores': 'Listagem de autores',
+    '/sobre': 'Info sobre o projeto'  
+}
 
 /*================================================
 # SERVIDOR
 #=================================================*/
 
-app.listen(8081, function(){
-    console.log("Servidor Rodando na url http://localhost:8081");
-});
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type':'text/plain'});
+    res.end(rotas[req.url]);
+})
+
+server.listen(port, () => {
+     console.log(`Servidor escutando na url http://localhost:${port}`);
+})
+
+// app.listen(port, function(){
+//     console.log(`Servidor escutando na url http://localhost:${port}`);
+// });
