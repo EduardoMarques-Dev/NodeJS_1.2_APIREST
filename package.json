@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Módulo de primeiros passos no curso de Node",
   "main": "primeiro-projeto.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +11,8 @@
   "author": "Carlos Eduardo Marques Pereira",
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
   }
 }
