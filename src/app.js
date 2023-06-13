@@ -1,13 +1,30 @@
 import express from "express";
+import db from "./config/dbConnect.js"
+import livros from "./models/Livro.js"
+
+/*================================================
+# Conexão com banco de dados
+#=================================================*/
+
+// Verifica se houve algum erro de conexão
+db.on("error", console.log.bind(console, "Erro de conexão"));
+// Instrução para abrir a conexão
+db.once("open", () => {
+    console.log('conexão com o banco feita com sucesso');
+});
+
+/*================================================
+# Inicialização de variáveis e constantes
+#=================================================*/
 
 const app = express();
-const livros = [
-    {id: 1, "titulo": "Senhor dos Aneis"},
-    {id: 2, "titulo": "O Hobbit"}
-]
+// const livros = [
+//     {id: 1, "titulo": "Senhor dos Aneis"},
+//     {id: 2, "titulo": "O Hobbit"}
+// ]
 
-// recurso que interpreta a entrada e saída de dados em json 
-app.use(express.json())
+// recurso para interpretar a entrada e saída de dados em json 
+app.use(express.json());
 
 /*================================================
 # ROTAS
@@ -20,13 +37,15 @@ app.get('/', (req, res) => {
 });
 
 /*================================================
-# LIVROS
+# ROTAS: LIVROS
 #=================================================*/
 
 app.get('/livros', (req, res) => {
-    res
-        .status(200)
-        .json(livros);
+    livros.find((err, livros) => {
+        res.status(200).json(livros);
+    });
+
+
 });
 
 app.get('/livros/:id', (req, res) => {
