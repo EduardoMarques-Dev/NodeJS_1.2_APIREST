@@ -2,12 +2,15 @@ import express from "express";
 import LivroController from "../controllers/livrosController.js";
 
 const router = express.Router();
+const uri = "livros";
+const path = `/${uri}/`;
 
 router
-    .get("/livros", LivroController.listarLivros)
-    .get("/livros/:id", LivroController.listarLivrosPorId)
-    .post("/livros", LivroController.cadastrarLivro)
-    .put("/livros/:id", LivroController.atualizarLivro)
-    .delete("/livros/:id", LivroController.excluirLivro);
+    .get(path, LivroController.listar)
+    .get(path + "busca", LivroController.listarLivroPorEditora)
+    .get(path + ":id", LivroController.listarPorId)
+    .post(path, LivroController.cadastrar)
+    .put(path + ":id", LivroController.atualizar)
+    .delete(path + ":id", LivroController.excluir);
 
 export default router;
