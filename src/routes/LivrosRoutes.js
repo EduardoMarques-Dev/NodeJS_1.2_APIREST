@@ -6,11 +6,11 @@ const uri = "livros";
 const path = `/${uri}/`;
 
 router
-    .get(path, LivroController.listar)
-    .get(path + "busca", LivroController.listarLivroPorEditora)
-    .get(path + ":id", LivroController.listarPorId)
-    .post(path, LivroController.cadastrar)
-    .put(path + ":id", LivroController.atualizar)
-    .delete(path + ":id", LivroController.excluir);
+  .get(path, LivroController.listarLivros)
+  .get(path + "busca", LivroController.listarLivroPorEditora)
+  .get(path + ":id", LivroController.listarLivroPorId)
+  .post(path, LivroController.cadastrarLivro)
+  .put(path + ":id", LivroController.atualizarLivro)
+  .delete(path + ":id", LivroController.excluirLivro);
 
 export default router;
