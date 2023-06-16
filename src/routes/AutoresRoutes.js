@@ -2,13 +2,12 @@ import express from "express";
 import AutorController from "../controllers/autoresController.js";
 
 const router = express.Router();
-const uri = "autores";
 
 router
-  .get(`/${uri}`, AutorController.listar)
-  .get(`/${uri}/:id`, AutorController.listarPorId)
-  .post(`/${uri}`, AutorController.cadastrar)
-  .put(`/${uri}/:id`, AutorController.atualizar)
-  .delete(`/${uri}/:id`, AutorController.excluir);
+  .get("/autores", AutorController.listarAutores)
+  .get("/autores/:id", AutorController.listarAutorPorId)
+  .post("/autores", AutorController.cadastrarAutor)
+  .put("/autores/:id", AutorController.atualizarAutor)
+  .delete("/autores/:id", AutorController.excluirAutor);
 
-export default router;
+export default router;   

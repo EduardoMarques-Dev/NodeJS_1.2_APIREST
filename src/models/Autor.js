@@ -4,7 +4,7 @@ const autorSchema = new mongoose.Schema(
   {
     id: {type: String},
     nome: {
-      type: String, 
+      type: String,
       required: [true, "O nome do(a) autor(a) é obrigatório"]
     },
     nacionalidade: {type: String}
@@ -14,7 +14,6 @@ const autorSchema = new mongoose.Schema(
   }
 );
 
-// cria o a tabela caso não exista
 const autores = mongoose.model("autores", autorSchema);
 
 export default autores;

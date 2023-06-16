@@ -1,17 +1,16 @@
 import express from "express";
-import livrosRoutes from "./LivrosRoutes.js";
-import autoresRoutes from "./AutoresRoutes.js";
-import manipulador404 from "../../middlewares/manipulador404.js";
+import livros from "./livrosRoutes.js";
+import autores from "./autoresRoutes.js";
 
 const routes = (app) => {
-  app.route("/", (req, res) => {
-    res.status(200).send("Curso de Node");
+  app.route("/").get((req, res) => {
+    res.status(200).send({titulo: "Curso de node"});
   });
 
   app.use(
-    express.json(), // interpreta input/output em json
-    livrosRoutes,
-    autoresRoutes
+    express.json(),
+    livros,
+    autores
   );
 };
 
