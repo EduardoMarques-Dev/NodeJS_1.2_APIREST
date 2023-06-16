@@ -1,6 +1,7 @@
 import express from "express";
 import livrosRoutes from "./LivrosRoutes.js";
 import autoresRoutes from "./AutoresRoutes.js";
+import manipulador404 from "../../middlewares/manipulador404.js";
 
 const routes = (app) => {
   app.route("/", (req, res) => {

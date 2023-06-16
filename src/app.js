@@ -1,4 +1,6 @@
 import express from "express";
+import manipulador404 from "../middlewares/manipulador404.js";
+import manipuladorDeErros from "../middlewares/manipuladorDeErros.js";
 import db from "./config/dbConnect.js";
 import routes from "./routes/index.js";
 
@@ -18,6 +20,16 @@ db.once("open", () => {
 #=================================================*/
 
 const app = express();
+
+/*================================================
+# Middlewares
+#=================================================*/
+
+// utilizando o express nas rotas
 routes(app);
+
+app.use(manipulador404);
+app.use(manipuladorDeErros);
+
 
 export default app;
